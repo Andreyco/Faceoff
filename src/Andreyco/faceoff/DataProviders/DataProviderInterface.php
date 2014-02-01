@@ -8,7 +8,7 @@ interface DataProviderInterface
      * @var mixed
      * @return mixed
      */
-    public function get($key, $default = false);
+    public function get($key, $default = null);
 
     /**
      * Store value for defined key.
