@@ -1,0 +1,21 @@
+{
+    "name": "andreyco/faceoff",
+    "description": "Wrapper + great helpers for Facebook SDK. Framework agnostic with support for framework service providers.",
+    "authors": [
+        {
+            "name": "Andrej Badin",
+            "email": "contact@andrejbadin.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "facebook/php-sdk": "3.2.x"
+    },
+    "autoload": {
+        "psr-0": {
+            "Andreyco\\Faceoff": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "license":  "proprietary"
+}
