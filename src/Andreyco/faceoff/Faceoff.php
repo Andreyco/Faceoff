@@ -6,6 +6,12 @@ class Faceoff extends \Facebook
 {
 
     /**
+     * Configuration settings.
+     * @var array
+     */
+    protected $config;
+
+    /**
      * Session storage object.
      */
     protected $dataProvider;
@@ -17,9 +23,11 @@ class Faceoff extends \Facebook
      */
     public function __construct(array $config, DataProviderInterface $dataProvider)
     {
+        $this->config = $config;
+
         $this->dataProvider = $dataProvider;
 
-        parent::__construct($config);
+        parent::__construct($config['init']);
     }
 
     /**
