@@ -1,6 +1,6 @@
 <?php namespace Andreyco\Faceoff\DataProviders;
 
-class SessionDataProvider implements DataProviderInterface
+class NativeSessionProvider implements DataProviderInterface
 {
 
     /**

@@ -8,7 +8,7 @@ class SessionDataProviderTest extends PHPUnit_Framework_TestCase
     {
         $_SESSION = array();
 
-        $this->provider = new Andreyco\Faceoff\DataProviders\SessionDataProvider;
+        $this->provider = new Andreyco\Faceoff\DataProviders\NativeSessionProvider;
     }
 
     public function testPutMethod()
