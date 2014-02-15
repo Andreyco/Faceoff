@@ -4,13 +4,13 @@ if (!session_id()) {
     session_start();
 }
 
-class SessionDataProviderTest extends PHPUnit_Framework_TestCase
+class NativeSessionProviderTest extends PHPUnit_Framework_TestCase
 {
     protected $provider;
 
     public function setUp()
     {
-        $this->provider = new Andreyco\Faceoff\DataProviders\NativeSessionProvider;
+        $this->provider = new Andreyco\Faceoff\SessionProviders\NativeSessionProvider;
     }
 
     public function testPutMethod()
