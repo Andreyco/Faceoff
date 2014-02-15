@@ -88,4 +88,34 @@ class Faceoff extends \Facebook
         }
     }
 
+    /**
+     * Check, whether user already likes visited Facebook page.
+     * @return mixed Return NULL if cannot determine, or BOOL otherwise.
+     */
+    public function likesPage()
+    {
+        $signedRequest = $this->getSignedRequest();
+
+        if (is_null($signedRequest) || ! array_key_exists('page', $signedRequest)) {
+            return null;
+        }
+
+        return $signedRequest['page']['liked'];
+    }
+
+    /**
+     * Check, whether user is page administrator.
+     * @return mixed Return NULL if cannot determine, or BOOL otherwise.
+     */
+    public function administratesPage()
+    {
+        $signedRequest = $this->getSignedRequest();
+
+        if (is_null($signedRequest) || ! array_key_exists('page', $signedRequest)) {
+            return null;
+        }
+
+        return $signedRequest['page']['admin'];
+    }
+
 }
