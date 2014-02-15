@@ -1,6 +1,6 @@
-<?php namespace Andreyco\Faceoff\DataProviders;
+<?php namespace Andreyco\Faceoff\SessionProviders;
 
-interface DataProviderInterface
+interface SessionProviderInterface
 {
     /**
      * Find value by key or return default value if not found.

@@ -1,6 +1,6 @@
 <?php namespace Andreyco\Faceoff;
 
-use Andreyco\Faceoff\DataProviders\DataProviderInterface;
+use Andreyco\Faceoff\SessionProviders\SessionProviderInterface;
 
 class Faceoff extends \Facebook
 {
@@ -14,18 +14,18 @@ class Faceoff extends \Facebook
     /**
      * Session storage object.
      */
-    protected $dataProvider;
+    protected $sessionProvider;
 
     /**
      * Initialize Facebook instance and set data provider.
      * @var array
-     * @var Andreyco\Faceoff\DataProviders\DataProviderInterface
+     * @var Andreyco\Faceoff\SessionProvider\SessionProviderInterface
      */
-    public function __construct(array $config, DataProviderInterface $dataProvider)
+    public function __construct(array $config, SessionProviderInterface $sessionProvider)
     {
         $this->config = $config;
 
-        $this->dataProvider = $dataProvider;
+        $this->sessionProvider = $sessionProvider;
 
         parent::__construct($config['init']);
     }
@@ -44,7 +44,7 @@ class Faceoff extends \Facebook
 
         $session_var_name = $this->constructSessionVariableName($key);
 
-        $this->dataProvider->put($session_var_name, $value);
+        $this->sessionProvider->put($session_var_name, $value);
     }
 
     /**
@@ -62,7 +62,7 @@ class Faceoff extends \Facebook
 
         $session_var_name = $this->constructSessionVariableName($key);
 
-        return $this->dataProvider->get($session_var_name);
+        return $this->sessionProvider->get($session_var_name);
     }
 
     /**
@@ -71,7 +71,7 @@ class Faceoff extends \Facebook
      */
     protected function clearPersistentData($key)
     {
-        $this->dataProvider->forget($key);
+        $this->sessionProvider->forget($key);
     }
 
     /**

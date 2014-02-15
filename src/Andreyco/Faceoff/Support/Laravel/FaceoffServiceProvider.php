@@ -41,7 +41,7 @@ class FaceoffServiceProvider extends ServiceProvider
         {
             return new Faceoff(
                 $this->app->make('config')->get('faceoff::config'),
-                $this->app->make('\Andreyco\Faceoff\DataProviders\LaravelSessionProvider'));
+                $this->app->make('Andreyco\Faceoff\Support\Laravel\SessionProvider'));
         });
     }
 }

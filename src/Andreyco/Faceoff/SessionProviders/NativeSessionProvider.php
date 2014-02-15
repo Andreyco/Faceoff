@@ -1,21 +1,16 @@
-<?php namespace Andreyco\Faceoff\DataProviders;
+<?php namespace Andreyco\Faceoff\SessionProviders;
 
-use Illuminate\Session\SessionManager;
-
-class LaravelSessionProvider implements DataProviderInterface
+class NativeSessionProvider implements SessionProviderInterface
 {
-
-    /**
-     * Session manager.
-     */
-    protected $session;
 
     /**
      * Initialize session if needed.
      */
-    public function __construct(SessionManager $session)
+    public function __construct()
     {
-        $this->session = $session;
+        if (!session_id()) {
+            session_start();
+        }
     }
 
     /**
@@ -26,7 +21,7 @@ class LaravelSessionProvider implements DataProviderInterface
      */
     public function get($key, $default = null)
     {
-        return $this->session->get($key, $default);
+        return isset($_SESSION[ $key ]) ? $_SESSION[ $key ] : $default;
     }
 
     /**
@@ -36,7 +31,7 @@ class LaravelSessionProvider implements DataProviderInterface
      */
     public function put($key, $value)
     {
-        $this->session->put($key, $value);
+        $_SESSION[$key] = $value;
     }
 
     /**
@@ -45,7 +40,7 @@ class LaravelSessionProvider implements DataProviderInterface
      */
     public function forget($key)
     {
-        $this->session->forget($key);
+        unset($_SESSION[$key]);
     }
 
 }
