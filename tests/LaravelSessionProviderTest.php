@@ -1,18 +1,5 @@
 <?php
 
-class TestCase extends Illuminate\Foundation\Testing\TestCase {
-
-    public function createApplication()
-    {
-        $unitTesting = true;
-
-        $testEnvironment = 'testing';
-
-        return require __DIR__.'/../../bootstrap/start.php';
-    }
-
-}
-
 class LaravelSessionProviderTest extends TestCase
 {
     /**
@@ -22,7 +9,7 @@ class LaravelSessionProviderTest extends TestCase
     {
         parent::setUp();
 
-        $this->provider = $this->app->make('Andreyco\Faceoff\DataProviders\LaravelSessionProvider');
+        $this->provider = $this->app->make('Andreyco\Faceoff\Support\Laravel\SessionProvider');
     }
 
     public function testPutMethod()
