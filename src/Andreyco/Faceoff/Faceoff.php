@@ -4,6 +4,7 @@ use Andreyco\Faceoff\SessionProviders\SessionProviderInterface;
 
 class Faceoff extends \Facebook
 {
+    use \Andreyco\Faceoff\Traits\Session;
 
     /**
      * Configuration settings.
@@ -31,64 +32,6 @@ class Faceoff extends \Facebook
     }
 
     /**
-     * Store value for defined key.
-     * @var string
-     * @var mixed
-     */
-    protected function setPersistentData($key, $value)
-    {
-        if (!in_array($key, self::$kSupportedKeys)) {
-            self::errorLog('Unsupported key passed to getPersistentData.');
-            return $default;
-        }
-
-        $session_var_name = $this->constructSessionVariableName($key);
-
-        $this->sessionProvider->put($session_var_name, $value);
-    }
-
-    /**
-     * Find value by key or return default value if not found.
-     * @var string
-     * @var mixed
-     * @return mixed
-     */
-    protected function getPersistentData($key, $default = false)
-    {
-        if (!in_array($key, self::$kSupportedKeys)) {
-            self::errorLog('Unsupported key passed to getPersistentData.');
-            return $default;
-        }
-
-        $session_var_name = $this->constructSessionVariableName($key);
-
-        return $this->sessionProvider->get($session_var_name);
-    }
-
-    /**
-     * Discard record by key.
-     * @var string
-     */
-    protected function clearPersistentData($key)
-    {
-        $this->sessionProvider->forget($key);
-    }
-
-    /**
-     * Discard all records and shared session.
-     */
-    protected function clearAllPersistentData()
-    {
-        foreach (self::$kSupportedKeys as $key) {
-            $this->clearPersistentData($key);
-        }
-
-        if ($this->sharedSessionID) {
-            $this->deleteSharedSessionCookie();
-        }
-    }
-
-    /**
      * Get data for current user.
      *
      * @param array $params
@@ -103,6 +46,26 @@ class Faceoff extends \Facebook
         unset($params['fields']);
 
         return $this->api("/me?fields={$fields}", 'GET', $params);
+    }
+
+    /**
+     * Execute FQL query with support for multiqueries.
+     *
+     * @param mixed $query Single query or array of queries to execute.
+     * @return array
+     */
+    public function fql($query)
+    {
+        $method = is_array($query) && count($query > 1)
+            ? 'fql.multiquery'
+            : 'fql.query';
+
+        $queryAttr = $method === 'fql.query' ? 'query' : 'queries';
+
+        return $this->api(array(
+            'method'    => $method,
+            $queryAttr  => $query
+        ));
     }
 
     /**
