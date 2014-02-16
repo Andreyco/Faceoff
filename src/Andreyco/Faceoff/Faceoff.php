@@ -89,7 +89,7 @@ class Faceoff extends \Facebook
     }
 
     /**
-     * Get data for current user
+     * Get data for current user.
      *
      * @param array $params
      * @return array
