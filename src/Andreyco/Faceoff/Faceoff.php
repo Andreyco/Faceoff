@@ -89,6 +89,23 @@ class Faceoff extends \Facebook
     }
 
     /**
+     * Get data for current user
+     *
+     * @param array $params
+     * @return array
+     */
+    public function me(array $params = array())
+    {
+        $fields = isset($params['fields']) && is_array($params['fields'])
+            ? implode(',', $params['fields'])
+            : '';
+
+        unset($params['fields']);
+
+        return $this->api("/me?fields={$fields}", 'GET', $params);
+    }
+
+    /**
      * Check, whether user already likes visited Facebook page.
      * @return mixed Return NULL if cannot determine, or BOOL otherwise.
      */
