@@ -4,7 +4,7 @@ if (!session_id()) {
     session_start();
 }
 
-class NativeSessionProviderTest extends PHPUnit_Framework_TestCase
+class FaceoffTest extends PHPUnit_Framework_TestCase
 {
     protected $faceoff;
 
@@ -34,9 +34,16 @@ class NativeSessionProviderTest extends PHPUnit_Framework_TestCase
 
         // Filter fields
         $params['fields'] = array('first_name');
+        $data1 = $this->faceoff->me($params);
 
-        $data = $this->faceoff->me($params);
-        $this->assertArrayHasKey('first_name', $data);
-        $this->assertArrayNotHasKey('last_name', $data);
+        $params['fields'] = 'first_name';
+        $data2 = $this->faceoff->me($params);
+
+        // Test presence of keys
+        $this->assertArrayHasKey('first_name', $data1);
+        $this->assertArrayNotHasKey('last_name', $data1);
+
+        // By comparing result sets, we do not need to test second result set!
+        $this->assertSame($data1, $data2);
     }
 }

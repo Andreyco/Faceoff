@@ -39,11 +39,14 @@ class Faceoff extends \Facebook
      */
     public function me(array $params = array())
     {
-        $fields = isset($params['fields']) && is_array($params['fields'])
-            ? implode(',', $params['fields'])
-            : '';
-
-        unset($params['fields']);
+        if (isset($params['fields']))
+        {
+            $fields = is_array($params['fields']) ? implode(',', $params['fields']) : $params['fields'];
+            unset($params['fields']);
+        } else
+        {
+            $fields = '';
+        }
 
         return $this->api("/me?fields={$fields}", 'GET', $params);
     }
