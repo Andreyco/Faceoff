@@ -8,8 +8,6 @@ class FaceoffTest extends PHPUnit_Framework_TestCase
 {
     protected $faceoff;
 
-    protected $token = '';
-
     public function setUp()
     {
         $provider = new Andreyco\Faceoff\SessionProviders\NativeSessionProvider;
@@ -18,26 +16,26 @@ class FaceoffTest extends PHPUnit_Framework_TestCase
         );
 
         $this->faceoff = new Andreyco\Faceoff\Faceoff($config, $provider);
+
+        // set valid token for testing here
+        $this->faceoff->setAccessToken('');
     }
 
     public function testMeMethod()
     {
-        $params = array(
-            'fields' => array(),
-            'access_token' => $this->token
-        );
+        $fields = array('first_name', 'last_name');
 
         $this->assertSame(
-            $this->faceoff->api('/me', 'GET', $params),
-            $this->faceoff->me($params)
+            $this->faceoff->api('/me?fields='.implode(',', $fields), 'GET'),
+            $this->faceoff->me($fields)
         );
 
         // Filter fields
-        $params['fields'] = array('first_name');
-        $data1 = $this->faceoff->me($params);
+        $fields = array('first_name');
+        $data1 = $this->faceoff->me($fields);
 
-        $params['fields'] = 'first_name';
-        $data2 = $this->faceoff->me($params);
+        $fields = 'first_name';
+        $data2 = $this->faceoff->me($fields);
 
         // Test presence of keys
         $this->assertArrayHasKey('first_name', $data1);
@@ -49,13 +47,9 @@ class FaceoffTest extends PHPUnit_Framework_TestCase
 
     public function testFriendsMethod()
     {
-        $params = array(
-            'access_token' => $this->token
-        );
-
         $this->assertSame(
-            $this->faceoff->api('/me/friends', 'GET', $params),
-            $this->faceoff->friends($params)
+            $this->faceoff->api('/me/friends', 'GET'),
+            $this->faceoff->friends()
         );
     }
 }

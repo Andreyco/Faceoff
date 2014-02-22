@@ -34,21 +34,14 @@ class Faceoff extends \Facebook
     /**
      * Get data for current user.
      *
-     * @param array $params
+     * @param array $fields
      * @return array
      */
-    public function me(array $params = array())
+    public function me($fields = array())
     {
-        if (isset($params['fields']))
-        {
-            $fields = is_array($params['fields']) ? implode(',', $params['fields']) : $params['fields'];
-            unset($params['fields']);
-        } else
-        {
-            $fields = '';
-        }
+        $fields = is_array($fields) ? implode(',', $fields) : $fields;
 
-        return $this->api("/me?fields={$fields}", 'GET', $params);
+        return $this->api("/me?fields={$fields}", 'GET');
     }
 
     /**
@@ -57,9 +50,9 @@ class Faceoff extends \Facebook
      * @param array $params
      * @return array
      */
-    public function friends(array $params = array())
+    public function friends()
     {
-        return $this->api("/me/friends", 'GET', $params);
+        return $this->api("/me/friends", 'GET');
     }
 
     /**
