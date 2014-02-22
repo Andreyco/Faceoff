@@ -46,4 +46,16 @@ class FaceoffTest extends PHPUnit_Framework_TestCase
         // By comparing result sets, we do not need to test second result set!
         $this->assertSame($data1, $data2);
     }
+
+    public function testFriendsMethod()
+    {
+        $params = array(
+            'access_token' => $this->token
+        );
+
+        $this->assertSame(
+            $this->faceoff->api('/me/friends', 'GET', $params),
+            $this->faceoff->friends($params)
+        );
+    }
 }

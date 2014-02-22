@@ -52,6 +52,23 @@ class Faceoff extends \Facebook
     }
 
     /**
+     * Get friend list of current user.
+     *
+     * @param array $params
+     * @return array
+     */
+    public function friends(array $params = array())
+    {
+        $fields = isset($params['fields']) && is_array($params['fields'])
+            ? implode(',', $params['fields'])
+            : '';
+
+        unset($params['fields']);
+
+        return $this->api("/me/friends", 'GET', $params);
+    }
+
+    /**
      * Execute FQL query with support for multiqueries.
      *
      * @param mixed $query Single query or array of queries to execute.
