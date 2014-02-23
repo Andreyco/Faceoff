@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
     /**
      * Initialize a Facebook Application.
      *
@@ -13,12 +13,12 @@ return array(
      *                       false for non-canvas apps.  Defaults to true.
      */
 
-    'init'  => array(
+    'init'  => [
         'appId' => null,
         'secret' => null,
         'fileUpload' => false,
         'allowSignedRequest' => true,
         'trustForwarded' => false,
-    ),
+    ],
 
-);
+];
