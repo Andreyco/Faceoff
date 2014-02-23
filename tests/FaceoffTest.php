@@ -52,4 +52,12 @@ class FaceoffTest extends PHPUnit_Framework_TestCase
             $this->faceoff->friends()
         );
     }
+
+    public function testAlbumsMethod()
+    {
+        $this->assertSame(
+            $this->faceoff->api('/me/albums'),
+            $this->faceoff->albums()
+        );
+    }
 }

@@ -47,12 +47,21 @@ class Faceoff extends \Facebook
     /**
      * Get friend list of current user.
      *
-     * @param array $params
      * @return array
      */
     public function friends()
     {
         return $this->api("/me/friends", 'GET');
+    }
+
+    /**
+     * Get photo albums of current user.
+     *
+     * @return array
+     */
+    public function albums()
+    {
+        return $this->api("/me/albums", 'GET');
     }
 
     /**
