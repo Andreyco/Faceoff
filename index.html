@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Faceoff - Wrapper and helper methods for Facebook SDK.</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- CSS
+        ================================================== -->
+    <!-- Bootstrap 3-->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic|Roboto+Condensed:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+    <link href="vendor/prism/prism.css" rel="stylesheet" media="screen">
+    <!-- Template Styles -->
+    <link href="css/style.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+
+	  <!-- NAVBAR
+	      ================================================== -->
+	  <nav class="navbar navbar-default" role="navigation">
+	  	  <div class="container">
+			  <div class="navbar-header">
+			    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+			      <span class="sr-only">Toggle navigation</span>
+			      <span class="icon-bar"></span>
+			      <span class="icon-bar"></span>
+			      <span class="icon-bar"></span>
+			    </button>
+
+			    <!--Replace text with your app name or logo image-->
+			    <a class="navbar-brand" href="#">Faceoff</a>
+
+			  </div>
+			  <div class="collapse navbar-collapse navbar-ex1-collapse">
+			    <ul class="nav navbar-nav">
+			      <li><a onclick="$('header').animatescroll({padding:71});">Start</a></li>
+			      <li><a onclick="$('.installation').animatescroll({padding:71});">Installation</a></li>
+			      <li><a onclick="$('.usage').animatescroll({padding:71});">Usage</a></li>
+			      <li><a onclick="$('.methods').animatescroll({padding:71});">Documentation</a></li>
+			      <li><a onclick="$('.support').animatescroll({padding:71});">Support</a></li>
+			    </ul>
+			  </div>
+		  </div>
+	  </nav>
+
+
+	   <!-- HEADER
+	   ================================================== -->
+	  <header>
+		 <div class="container">
+			 <div class="row">
+				 <div class="col-md-12">
+					  <h1>Faceoff</h1>
+					  <p class="lead">
+					  	Wrapper and helper methods for Facebook SDK.<br/>
+					  	<span>
+					  		Built to be framework agnostic, but won't let you down<br/> with framework of your choice.
+					  	</span>
+					  </p>
+				</div>
+			</div>
+		</div>
+	 </header>
+
+	  <!-- PURCHASE
+	      ================================================== -->
+	  <section class="installation">
+		  <div class="container">
+			  <div class="row">
+				  <div class="col-md-offset-2 col-md-8">
+					<h1>Installation</h1>
+			 	    <div class="step">
+			 	    	<h2>Oldschool way, direct download</h2>
+			 	    	<p>
+			 	    		You can download <i>Faceoff</i> from <a href="https://github.com/Andreyco/Faceoff/archive/master.zip" target="_blank">GitHub</a> the old way, copy it wherever you want and use!<br/>
+			 	    		Do not forget to download official <a href="https://github.com/facebook/facebook-php-sdk/archive/master.zip" target="_blank">Facebook SDK for PHP</a> as well!
+		 	    		</p>
+			 	    </div>
+			 	    <div class="step">
+			 	    	<h2>Cool way, via Composer</h2>
+			 	    	<pre><code class="language-javascript">{
+    require: {
+        "andreyco/faceoff": "dev-master"
+    }
+}
+</code></pre>
+			 	    </div>
+				  </div>
+			  </div>
+		  </div>
+	  </section>
+
+	<section class="intermezzo dunes">
+		<div class="container">
+			  <div class="row">
+				  <div class="col-md-offset-2 col-md-8">
+					  <h1>Easy to use,<br/> with helpfull methods</h1>
+				  </div>
+			  </div>
+		  </div>
+	  </section>
+
+	  <section class="usage">
+		  <div class="container">
+			  <div class="row">
+				  <div class="col-md-offset-2 col-md-8">
+					<h1>Usage</h1>
+					<p class="lead">
+						As said, Faceoff is built to be framework agnostic. Use it either with framework of your choice, or you dump frameworks and utilize pure PHP instead.
+					</p>
+					<!-- Pure PHP -->
+			 	    <div class="step">
+			 	    	<h2>Pure PHP</h2>
+			 	    	<p>
+			 	    		Make sure package files are loaded. Manage configuration is loaded somehow, or configure it inline.<br/>
+			 	    		Speaking about pure PHP, <code class="language-php"> require_once() </code> is enough!
+		 	    		</p>
+<pre class="language-php"><code>// Load official Facebook SDK
+require_once('facebook-php-sdk/src/facebook.php');
+
+// Load Faceoff files
+require_once('faceoff/src/Andreyco/Faceoff/SessionProviders/SessionProviderInterface.php');
+require_once('faceoff/src/Andreyco/Faceoff/SessionProviders/NativeSessionProvider.php');
+require_once('faceoff/src/Andreyco/Faceoff/Traits/Session.php');
+require_once('faceoff/src/Andreyco/Faceoff/Faceoff.php');
+
+$config = require_once('faceoff/src/config/config.php');
+$sessionProvider = new \Andreyco\Faceoff\SessionProviders\NativeSessionProvider;
+$faceoff = new \Andreyco\Faceoff\Faceoff($config, $sessionProvider);
+
+// Use Faceoff!
+if (! $faceoff->getUser()) {
+    echo '&lt;script&gt;top.location.href="'. $faceoff->getLoginUrl() .'";&lt;/script&gt;';
+}</code></pre>
+			 	    </div>
+
+			 	    <!-- Laravel 4 -->
+			 	    <div class="step">
+			 	    	<h2>Laravel 4</h2>
+			 	    	<p>
+			 	    		Faceoff comes with support for Laravel 4 right out of the box!<br/>
+		 	    		</p>
+
+		 	    		<p>
+		 	    			To prevent loss of configuration after each update of Faceoff package, you should publish configuration files and edit these instead.
+		 	    		</p>
+
+						<pre class="language-php"><code>php artisan config:publish andreyco/faceoff</code></pre>
+
+		 	    		<p>
+		 	    			Just open up <code class="language-php"> config/app.php </code> file, register <i>Service provider</i> and add an <i>Alias</i>
+		 	    		</p>
+
+<pre class="language-php"><code>'providers' => array(
+    // ...
+    'Andreyco\Faceoff\Support\Laravel\FaceoffServiceProvider',
+    // ...
+),
+
+'aliases' => array(
+    // ...
+    'Faceoff'       => 'Andreyco\Faceoff\Support\Laravel\Facade',
+    // ...
+),</code></pre>
+			 	    </div>
+
+			 	    <p>
+			 	    	Just use it!
+			 	    </p>
+			 	    <pre class="language-php"><code>// Use Faceoff!
+if (! Faceoff::getUser()) {
+    echo '&lt;script&gt;top.location.href="'. Faceoff::getLoginUrl() .'";&lt;/script&gt;';
+}</code></pre>
+
+				  </div>
+			  </div>
+		  </div>
+	  </section>
+
+
+	  <!-- PAYOFF
+	      ================================================== -->
+	  <section class="intermezzo mountain">
+		<div class="container">
+			  <div class="row">
+				  <div class="col-md-offset-2 col-md-8">
+					  <h1>
+					  	Extensible<br/>
+					  	<span>
+					  		Developers can add support for any framework via an&nbsp;extensible&nbsp;API.
+					  	</span>
+					  </h1>
+				  </div>
+			  </div>
+		  </div>
+	  </section>
+
+	  <!-- FEATURES
+	      ================================================== -->
+	  <section class="methods">
+		  <div class="container">
+			  <div class="row">
+
+				  <div class="col-md-offset-2 col-md-8">
+						<h1>Documentation</h1>
+						<p class="lead">
+							Since Faceoff extends official Facebook SDK for PHP, it offers its native methods as well. You should browse <a href="https://developers.facebook.com/docs/reference/php/" target="_blank">official documentation</a> or read <a href="https://github.com/facebook/facebook-php-sdk" target="_blank">the code</a> to learn more about them.<br/>
+							Apart from these, Faceoff offers methods which provide nice interface to native functionality.
+
+						</p>
+
+						<div class="method">
+							<pre class="language-php"><code>array me ($fields)</code></pre>
+							Get data for current user.
+							<div class="parameters">
+								<span>Parameters</span>
+								<code class="language-php">$fields</code><br/>
+								List of fields to retrieve. Can be represented as comma separated list (string) or array of fields.
+							</div>
+							<div class="parameters">
+								<span>Return value</span>
+								<code class="language-php">array</code> containing fields passed to the function. Array contains <b>id</b> key even if not requested.
+							</div>
+						</div>
+
+						<div class="method">
+							<pre class="language-php"><code>array friends ()</code></pre>
+							Get friendlist of current user.
+							<div class="parameters">
+								<span>Return value</span>
+								<code class="language-php">array</code> containing friendlist of current user.
+							</div>
+						</div>
+
+						<div class="method">
+							<pre class="language-php"><code>mixed likesPage()</code></pre>
+							Check whether user already likes currently visited Facebook page.
+
+							<div class="parameters">
+								<span>Return value</span>
+								<code class="language-php">NULL</code> if cannot determine, or <code class="language-php">BOOL</code> otherwise.
+							</div>
+						</div>
+
+						<div class="method">
+							<pre class="language-php"><code>mixed administratesPage()</code></pre>
+							Check whether user is administrator of currently visited page.
+
+							<div class="parameters">
+								<span>Return value</span>
+								<code class="language-php">NULL</code> if cannot determine, or <code class="language-php">BOOL</code> otherwise.
+							</div>
+						</div>
+
+						<div class="method">
+							<pre class="language-php"><code>array fql($query)</code></pre>
+							Execute single FQL query or multiple queries.
+							<div class="parameters">
+								<span>Parameters</span>
+								<code class="language-php">$query</code><br/>
+								Single query represented as string or array of queries to execute.
+							</div>
+							<div class="parameters">
+								<span>Return value</span>
+								<code class="language-php">array</code> of result data for each of passed queries.
+							</div>
+						</div>
+
+				  </div>
+
+			  </div>
+		  </div>
+	  </section>
+
+
+
+	 <!-- GET IT
+	     ================================================== -->
+	  <section class="support">
+	  	<div class="container">
+	  		<div class="row">
+	  			<div class="col-md-12">
+		  			<ul>
+	                	<li><a href="https://twitter.com/Andreyco">Follow me on Twitter</a></li>
+	                	<li><a href="https://github.com/Andreyco">Github</a></li>
+                	</ul>
+                	Original "Landy" theme by <a href="https://github.com/paolotripodi">paolotripodi</a>
+	  			</div>
+	  		</div>
+	  	</div>
+	  </section>
+
+
+	 <!-- JAVASCRIPT
+	     ================================================== -->
+    <script src="js/jquery.js"></script>
+    <script src="js/animatescroll.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="vendor/prism/prism.js"></script>
+
+</html>

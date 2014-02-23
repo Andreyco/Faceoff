@@ -1,0 +1,349 @@
+@import "animate.min.css";
+
+/*-----------------------------------------------------------------------------------*/
+/* GENERAL
+/*-----------------------------------------------------------------------------------*/
+
+body{
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{
+	color: #3a3a3a;
+	font-weight: 700;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+h1 {
+	font-size: 40px;
+	margin-bottom: 40px;
+	text-transform: uppercase;
+}
+
+h2 {
+	font-size: 30px;
+}
+
+p{
+	font-size: 1.2em;
+}
+
+pre {
+	margin-bottom: 25px !important;
+}
+
+.lead{
+	font-weight: 300;
+}
+
+.weight-600 {
+	font-weight: 600;
+}
+
+button {
+	display: inline-block;
+	margin-bottom: 0;
+	margin-bottom: 10px;
+	padding: 6px 12px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	border-radius: 5px;
+	vertical-align: middle;
+	text-align: center;
+	white-space: nowrap;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 1.428571429;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+.visibility{
+	visibility: hidden;
+}
+
+.animated{
+	visibility: visible!important;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* NAVBAR
+/*-----------------------------------------------------------------------------------*/
+
+nav.navbar{
+	position: fixed;
+	top: -72px;
+	margin-bottom: 0px;
+	padding: 10px 0px 10px 0px;
+	width: 100%;
+	border-radius: 0px;
+	transition: all 0.2s;
+}
+
+.navbar-nav{
+	float: right;
+}
+
+nav.navbar.fixed-to-top{
+	top: 0px;
+}
+
+.navbar-default{
+	border: none;
+	border-bottom: 1px solid #eee;
+	background: #fff;
+	opacity: 0.95;
+	display: none;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #aaa;
+	font-size: 1.2em;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus{
+	color: #3A3A3A;
+	cursor: pointer;
+	-webkit-transition: all 300ms ease-in-out;
+	-moz-transition: all 300ms ease-in-out;
+	-ms-transition: all 300ms ease-in-out;
+	-o-transition: all 300ms ease-in-out;
+	transition: all 300ms ease-in-out;
+}
+
+.navbar-default .navbar-brand{
+	color: #333333;
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: 2em;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* HEADER
+/*-----------------------------------------------------------------------------------*/
+
+header{
+	padding: 150px 0px 0px 0px;
+	height: 750px;
+	background: #3B5998;
+	color: white;
+	text-align: center;
+}
+
+header h1{
+	text-transform: uppercase;
+	font-weight: 700;
+	font-weight: 300;
+	font-size: 100px;
+	font-family: 'Roboto Condensed', sans-serif;
+	color: white;
+}
+
+header p.lead{
+	font-size: 36px;
+}
+
+header p.lead span {
+	padding-top: 15px;
+	font-size: 24px;
+	line-height: 36px;
+	display: block;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* PURCHASE
+/*-----------------------------------------------------------------------------------*/
+
+.usage,
+.installation {
+	overflow: hidden;
+	padding: 100px 0px 100px 0px;
+	min-height: 200px;
+}
+
+.usage .step,
+.installation .step  {
+	margin-bottom: 50px;
+}
+
+.usage h1 {
+	margin-bottom: 10px;
+}
+
+.usage .lead {
+	margin-bottom: 50px;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	PAYOFF
+/*-----------------------------------------------------------------------------------*/
+
+.intermezzo {
+	overflow: hidden;
+	padding: 200px 0px 200px 0px;
+	background-position: center top;
+	background-repeat: repeat-x;
+	color: white;
+}
+
+.intermezzo h1{
+	text-transform: uppercase;
+	font-weight: 300;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 2.8em;
+	color: white;
+	margin: 0;
+}
+
+.dunes {
+	background: url('../img/dunes.jpg');
+}
+
+.mountain {
+	background: url(../img/mountain.jpg);
+}
+
+.mountain h1 span {
+	font-size: 25px;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	FEATURES
+/*-----------------------------------------------------------------------------------*/
+
+.methods {
+	padding: 150px 0px 150px 0px;
+}
+
+.methods p {
+	font-weight: 400;
+}
+
+.methods h2{
+	text-transform: uppercase;
+	font-weight: 300;
+}
+
+.methods pre,
+.methods code {
+	background: none !important;
+	border: none !important;
+	padding: 0;
+	margin: 0 0 15px 0 !important;
+}
+.methods code > span {
+	background: white !important;
+	border: none !important;
+}
+
+.methods .method {
+	margin: 10px 0 50px 25px;
+}
+
+.methods .method:last-child {
+	margin-bottom: 0;
+}
+
+.methods .method > pre {
+	margin: 0px 0 10px -25px !important;
+}
+
+.methods .method .parameters > span {
+	display: block;
+	padding: 10px 0 5px 0;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.methods .method .parameters code {
+	/*padding-right: 10px;*/
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	GET-IT
+/*-----------------------------------------------------------------------------------*/
+
+.support{
+	padding: 100px 0px 100px 0px;
+	text-align: center;
+	border-top: 1px solid #eee;
+}
+
+.support ul{
+	list-style-type: none;
+	text-align: center;
+	margin: 0 0 25px 0;
+	padding: 0;
+}
+
+.support ul li{
+	display: inline-block;
+	margin-left:30px;
+}
+
+.support ul li:first-child{
+	margin-left: 0px;
+}
+
+.support ul li a{
+	color: #aaa;
+	font-size: 1.2em;
+	-webkit-transition: all 300ms ease-in-out;
+	-moz-transition: all 300ms ease-in-out;
+	-ms-transition: all 300ms ease-in-out;
+	-o-transition: all 300ms ease-in-out;
+	transition: all 300ms ease-in-out;
+}
+
+.support ul li a:hover{
+	color: #3A3A3A;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	MEDIA QUERIES
+/*-----------------------------------------------------------------------------------*/
+
+@media (max-width:768px) {
+
+	header{
+		padding-bottom: 50px;
+		min-height: 1000px;
+		height: 100%;
+	}
+
+	.navbar-nav {
+		float: left;
+		text-align: left;
+	}
+
+}
+
+@media (max-width:992px) {
+
+	header {
+		background-position-y: 0px;
+		background-size: 200%;
+	}
+
+}
+
+@media (max-width:480px) {
+
+	header{
+		padding-top: 30px;
+		padding-bottom: 0px;
+	}
+
+	header h1{
+		font-size: 70px;
+	}
+
+}
