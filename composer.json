@@ -1,6 +1,7 @@
 {
     "name": "andreyco/faceoff",
     "description": "Wrapper + great helpers for Facebook SDK. Framework agnostic with support for framework service providers.",
+    "homepage": "http://andreyco.github.io/Faceoff/",
     "authors": [
         {
             "name": "Andrej Badin",
